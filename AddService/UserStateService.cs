@@ -25,6 +25,6 @@ namespace AddService
             //}
 
             callback.NewUser(user);
-        }
+        }//kl
     }
 }
