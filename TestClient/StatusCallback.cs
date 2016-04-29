@@ -8,9 +8,9 @@ using Model;
 
 namespace TestClient
 {
-    public class StatusCallback : IUserStateServiceCallback
+    public class StatusCallback : StatusService.IUserStateServiceCallback
     {
-        public void NewUser(User user)
+        public void NewUser(AddToDict users, User user)
         {
             Console.WriteLine("callback");
         }

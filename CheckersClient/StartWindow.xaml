@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckersClient"
         mc:Ignorable="d"
-        Title="StartWindow" Height="300" Width="300">
+        Title="StartWindow" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -13,23 +13,28 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border  Background="Azure" BorderBrush="Gainsboro" BorderThickness="2" Height="100" VerticalAlignment="Top">
-            <TextBlock FontStyle="Italic" FontWeight="Black" TextWrapping="WrapWithOverflow" Text="User Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
+            <TextBlock FontStyle="Italic" FontWeight="Black" TextWrapping="WrapWithOverflow" Text="{Binding Path=Header}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
         </Border>
         <Border Grid.Row="1" Grid.RowSpan="2" Background="GhostWhite" BorderBrush="Gainsboro">
             <StackPanel Background="CadetBlue">
-                <TextBlock Text="Online users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>
-                <BulletDecorator>
-                    <BulletDecorator.Bullet>
-                        <Ellipse Height="10" Width="10" Fill="Green" HorizontalAlignment="Center"/>
-                    </BulletDecorator.Bullet>
-                    <TextBlock Text=" user1" FontSize="14"/>
-                </BulletDecorator>
-                <BulletDecorator>
-                    <BulletDecorator.Bullet>
-                        <Ellipse Height="10" Width="10" Fill="Green" HorizontalAlignment="Center"/>
-                    </BulletDecorator.Bullet>
-                    <TextBlock Text=" user2" FontSize="14" />
-                </BulletDecorator>
+                <TextBlock Text="Online users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>               
+                <ListBox ItemsSource="{DynamicResource Users}" Grid.IsSharedSizeScope="True" Background="CadetBlue" BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="UserName"/>
+                                </Grid.ColumnDefinitions>
+                                <BulletDecorator>
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="10" Width="10" Fill="Green" HorizontalAlignment="Center"/>
+                                    </BulletDecorator.Bullet>
+                                    <TextBlock Margin="2" Text="{Binding Value.UserName}" Grid.Column="0" Background="CadetBlue" FontSize="14"/>
+                                </BulletDecorator>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
         </Border>
         <Border Grid.Row="2">

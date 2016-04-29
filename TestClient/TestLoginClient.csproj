@@ -62,11 +62,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Properties\DataSources\AddService.AddToDict.datasource" />
     <None Include="Service References\AddUserService\AddService.wsdl" />
     <None Include="Service References\AddUserService\item.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\AddUserService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AddUserService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AddUserService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AddUserService\item4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\StatusService\item.xsd">
@@ -78,6 +88,12 @@
     <None Include="Service References\StatusService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\StatusService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StatusService\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\StatusService\UserStateService.wsdl" />
   </ItemGroup>
   <ItemGroup>
@@ -86,21 +102,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AddUserService\" />
     <WCFMetadataStorage Include="Service References\StatusService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AddUserService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AddUserService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AddUserService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AddUserService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AddService\AddService.csproj">
@@ -123,6 +124,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\StatusService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AddUserService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AddUserService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AddUserService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AddUserService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

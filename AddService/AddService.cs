@@ -12,9 +12,10 @@ namespace AddService
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "AddService" in both code and config file together.
     public class AddService : IAddService
     {
-        public bool IsUserExist(string userName, string password)
+        public AddToDict inst = AddToDict.Instance;
+        public AddToDict IsUserExist(string userName, string password)
         {
-            AddToDict inst = AddToDict.Instance;
+            //AddToDict inst = AddToDict.Instance;
             var exist = new BL.Logic();
             var getUser = new BL.Logic();
             bool b = exist.IsExist(userName, password);
@@ -23,9 +24,9 @@ namespace AddService
                 User user = getUser.GetUser(userName);
                 Guid key = Guid.NewGuid();
                 inst.AddToDictionary(key, user);
-                return true;
+                return inst;
             }
-            return false;
+            return inst;
         }
 
         public void InsertUser(int id, string userName, string firstName, string lastName, string password)

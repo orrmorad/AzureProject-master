@@ -10,7 +10,7 @@ namespace CheckersClient
 {
     public class UserStatus : IUserStateServiceCallback
     {
-        public void NewUser(User user)
+        public void NewUser(AddToDict users, User user)
         {
             
         }

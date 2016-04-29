@@ -12,14 +12,21 @@ namespace CheckersClient.UserStatusService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserStatusService.IUserStateService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserStatusService.IUserStateService", CallbackContract=typeof(CheckersClient.UserStatusService.IUserStateServiceCallback))]
     public interface IUserStateService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/GetOnlineUsers", ReplyAction="http://tempuri.org/IUserStateService/GetOnlineUsersResponse")]
-        void GetOnlineUsers();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/OpenSession", ReplyAction="http://tempuri.org/IUserStateService/OpenSessionResponse")]
+        void OpenSession();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/GetOnlineUsers", ReplyAction="http://tempuri.org/IUserStateService/GetOnlineUsersResponse")]
-        System.Threading.Tasks.Task GetOnlineUsersAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/OpenSession", ReplyAction="http://tempuri.org/IUserStateService/OpenSessionResponse")]
+        System.Threading.Tasks.Task OpenSessionAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserStateServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/NewUser", ReplyAction="http://tempuri.org/IUserStateService/NewUserResponse")]
+        void NewUser(AddService.AddToDict users, Model.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -28,33 +35,34 @@ namespace CheckersClient.UserStatusService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserStateServiceClient : System.ServiceModel.ClientBase<CheckersClient.UserStatusService.IUserStateService>, CheckersClient.UserStatusService.IUserStateService {
+    public partial class UserStateServiceClient : System.ServiceModel.DuplexClientBase<CheckersClient.UserStatusService.IUserStateService>, CheckersClient.UserStatusService.IUserStateService {
         
-        public UserStateServiceClient() {
+        public UserStateServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public UserStateServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public UserStateServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public UserStateServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public UserStateServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public UserStateServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public UserStateServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public UserStateServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public UserStateServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void GetOnlineUsers() {
-            base.Channel.GetOnlineUsers();
+        public void OpenSession() {
+            base.Channel.OpenSession();
         }
         
-        public System.Threading.Tasks.Task GetOnlineUsersAsync() {
-            return base.Channel.GetOnlineUsersAsync();
+        public System.Threading.Tasks.Task OpenSessionAsync() {
+            return base.Channel.OpenSessionAsync();
         }
     }
 }

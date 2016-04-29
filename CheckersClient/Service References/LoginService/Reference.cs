@@ -22,10 +22,10 @@ namespace CheckersClient.LoginService {
         System.Threading.Tasks.Task InsertUserAsync(int id, string userName, string firstName, string lastName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/IsUserExist", ReplyAction="http://tempuri.org/IAddService/IsUserExistResponse")]
-        bool IsUserExist(string userName, string password);
+        AddService.AddToDict IsUserExist(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/IsUserExist", ReplyAction="http://tempuri.org/IAddService/IsUserExistResponse")]
-        System.Threading.Tasks.Task<bool> IsUserExistAsync(string userName, string password);
+        System.Threading.Tasks.Task<AddService.AddToDict> IsUserExistAsync(string userName, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,11 +63,11 @@ namespace CheckersClient.LoginService {
             return base.Channel.InsertUserAsync(id, userName, firstName, lastName, password);
         }
         
-        public bool IsUserExist(string userName, string password) {
+        public AddService.AddToDict IsUserExist(string userName, string password) {
             return base.Channel.IsUserExist(userName, password);
         }
         
-        public System.Threading.Tasks.Task<bool> IsUserExistAsync(string userName, string password) {
+        public System.Threading.Tasks.Task<AddService.AddToDict> IsUserExistAsync(string userName, string password) {
             return base.Channel.IsUserExistAsync(userName, password);
         }
     }

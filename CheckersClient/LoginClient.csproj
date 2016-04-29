@@ -48,6 +48,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UsersLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -106,19 +107,41 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\AddService.AddToDict.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\LoginService\service.wsdl" />
-    <None Include="Service References\LoginService\service.xsd">
+    <None Include="Service References\LoginService\AddService.wsdl" />
+    <None Include="Service References\LoginService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\LoginService\service1.xsd">
+    <None Include="Service References\LoginService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginService\item4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserStatusService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserStatusService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserStatusService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserStatusService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserStatusService\item4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserStatusService\UserStateService.wsdl" />
@@ -134,21 +157,13 @@
     <WCFMetadataStorage Include="Service References\UserStatusService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\LoginService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\LoginService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\LoginService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AddService\AddService.csproj">
       <Project>{103F1DCB-7F10-45B2-A09D-56206FC01677}</Project>
       <Name>AddService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{2c371c3b-c041-4239-9b78-8399550f1b7f}</Project>
+      <Name>BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\UsersLib\Model.csproj">
       <Project>{3ffcb33d-96e2-4d1a-9bae-b363a128f1bf}</Project>
@@ -166,6 +181,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\UserStatusService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LoginService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LoginService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LoginService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LoginService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

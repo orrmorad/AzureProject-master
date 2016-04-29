@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckersClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BL;
+using AddService;
 
 namespace LoginClient
 {
@@ -20,6 +23,8 @@ namespace LoginClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        AddToDict ins;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,8 +33,15 @@ namespace LoginClient
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             var svc = new CheckersClient.LoginService.AddServiceClient();
-            if (svc.IsUserExist(txtUserName.Text, txtPassword.Password))
-                MessageBox.Show("Success");
+            ins = svc.IsUserExist(txtUserName.Text, txtPassword.Password);
+            string value = this.txtUserName.Text;
+            if (ins != null)
+            {
+                
+                StartWindow window2 = new StartWindow(value, ins);
+                window2.Show();
+                this.Close();
+            }
             else
                 MessageBox.Show("Login failed");
         }

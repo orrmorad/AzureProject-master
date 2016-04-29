@@ -15,6 +15,6 @@ namespace AddService
         void InsertUser(int id, string userName, string firstName, string lastName, string password);
 
         [OperationContract]
-        bool IsUserExist(string userName, string password);
+        AddToDict IsUserExist(string userName, string password);
     }
 }

@@ -19,12 +19,9 @@ namespace AddService
             Model.User user = null;
 
             callback = OperationContext.Current.GetCallbackChannel<IUserStateServiceCallback>();
-            //using (var context = new DataContext())
-            //{
-            //    user = context.Users.Where((u) => u.UserName == "orr").FirstOrDefault();
-            //}
+            AddToDict inst = AddToDict.Instance;
 
-            callback.NewUser(user);
+            callback.NewUser(inst, user);
         }//kl
     }
 }

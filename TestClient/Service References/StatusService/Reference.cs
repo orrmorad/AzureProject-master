@@ -26,7 +26,7 @@ namespace TestClient.StatusService {
     public interface IUserStateServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/NewUser", ReplyAction="http://tempuri.org/IUserStateService/NewUserResponse")]
-        void NewUser(Model.User user);
+        void NewUser(AddService.AddToDict users, Model.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
