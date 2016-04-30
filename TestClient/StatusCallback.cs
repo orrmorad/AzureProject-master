@@ -10,9 +10,9 @@ namespace TestClient
 {
     public class StatusCallback : StatusService.IUserStateServiceCallback
     {
-        public void NewUser(AddToDict users, User user)
+        public void Message()
         {
-            Console.WriteLine("callback");
+            Console.WriteLine("User is online");
         }
     }
 }

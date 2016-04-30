@@ -83,18 +83,6 @@
     <None Include="Service References\StatusService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\StatusService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\StatusService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\StatusService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\StatusService\item4.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\StatusService\UserStateService.wsdl" />
   </ItemGroup>
   <ItemGroup>
@@ -119,21 +107,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\StatusService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\StatusService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\StatusService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\StatusService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\AddUserService\item.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +117,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\AddUserService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StatusService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StatusService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StatusService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StatusService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

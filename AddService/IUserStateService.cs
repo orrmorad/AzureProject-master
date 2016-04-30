@@ -12,6 +12,6 @@ namespace AddService
     public interface IUserStateService
     {
         [OperationContract]
-        void OpenSession();
+        void Register();
     }
 }

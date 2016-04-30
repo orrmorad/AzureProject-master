@@ -11,7 +11,7 @@ namespace AddService
     
     public interface IUserStateServiceCallback
     {
-        [OperationContract]
-        void NewUser(AddToDict users, User user);
+        [OperationContract(IsOneWay = true)]
+        void Message();
     }
 }

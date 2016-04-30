@@ -17,8 +17,7 @@ namespace AddService
         BL.Logic logic = new BL.Logic();
 
         public AddToDict IsUserExist(string userName, string password)
-        {
-            //AddToDict inst = AddToDict.Instance;
+        {            
             var exist = new BL.Logic();
             var getUser = new BL.Logic();
             bool b = exist.IsExist(userName, password);

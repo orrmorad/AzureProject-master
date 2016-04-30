@@ -133,18 +133,6 @@
     <None Include="Service References\UserStatusService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserStatusService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserStatusService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserStatusService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserStatusService\item4.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\UserStatusService\UserStateService.wsdl" />
   </ItemGroup>
   <ItemGroup>
@@ -159,7 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AddService\AddService.csproj">
-      <Project>{103F1DCB-7F10-45B2-A09D-56206FC01677}</Project>
+      <Project>{103f1dcb-7f10-45b2-a09d-56206fc01677}</Project>
       <Name>AddService</Name>
     </ProjectReference>
     <ProjectReference Include="..\BL\BL.csproj">
@@ -172,21 +160,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\UserStatusService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\UserStatusService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\UserStatusService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\UserStatusService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\LoginService\item.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +170,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\LoginService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserStatusService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserStatusService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserStatusService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserStatusService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

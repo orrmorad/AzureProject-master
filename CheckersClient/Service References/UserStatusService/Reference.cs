@@ -15,18 +15,18 @@ namespace CheckersClient.UserStatusService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserStatusService.IUserStateService", CallbackContract=typeof(CheckersClient.UserStatusService.IUserStateServiceCallback))]
     public interface IUserStateService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/OpenSession", ReplyAction="http://tempuri.org/IUserStateService/OpenSessionResponse")]
-        void OpenSession();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/Register", ReplyAction="http://tempuri.org/IUserStateService/RegisterResponse")]
+        void Register();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/OpenSession", ReplyAction="http://tempuri.org/IUserStateService/OpenSessionResponse")]
-        System.Threading.Tasks.Task OpenSessionAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/Register", ReplyAction="http://tempuri.org/IUserStateService/RegisterResponse")]
+        System.Threading.Tasks.Task RegisterAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IUserStateServiceCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/NewUser", ReplyAction="http://tempuri.org/IUserStateService/NewUserResponse")]
-        void NewUser(AddService.AddToDict users, Model.User user);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/Message")]
+        void Message();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -57,12 +57,12 @@ namespace CheckersClient.UserStatusService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void OpenSession() {
-            base.Channel.OpenSession();
+        public void Register() {
+            base.Channel.Register();
         }
         
-        public System.Threading.Tasks.Task OpenSessionAsync() {
-            return base.Channel.OpenSessionAsync();
+        public System.Threading.Tasks.Task RegisterAsync() {
+            return base.Channel.RegisterAsync();
         }
     }
 }

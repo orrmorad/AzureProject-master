@@ -1,8 +1,10 @@
 ﻿using AddService;
+using CheckersClient.UserStatusService;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -49,8 +51,8 @@ namespace CheckersClient
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            svc = new LoginService.AddServiceClient();
-            OfflineUserList();
+            svc = new LoginService.AddServiceClient();            
+            OfflineUserList();                     
         }
     }
 }

@@ -103,7 +103,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IUserStateService_OpenSession_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IUserStateService_Register_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -126,7 +126,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IUserStateService_OpenSession_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IUserStateService_Register_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -149,30 +149,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IUserStateService_NewUser_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IUserStateService_NewUser_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IUserStateService_Message_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -198,56 +175,44 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AddService" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Model" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IUserStateService_OpenSession_InputMessage">
-    <wsdl:part name="parameters" element="tns:OpenSession" />
+  <wsdl:message name="IUserStateService_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
   </wsdl:message>
-  <wsdl:message name="IUserStateService_OpenSession_OutputMessage">
-    <wsdl:part name="parameters" element="tns:OpenSessionResponse" />
+  <wsdl:message name="IUserStateService_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserStateService_NewUser_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NewUser" />
-  </wsdl:message>
-  <wsdl:message name="IUserStateService_NewUser_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NewUserResponse" />
+  <wsdl:message name="IUserStateService_Message_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Message" />
   </wsdl:message>
   <wsdl:portType name="IUserStateService">
-    <wsdl:operation name="OpenSession">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserStateService/OpenSession" message="tns:IUserStateService_OpenSession_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserStateService/OpenSessionResponse" message="tns:IUserStateService_OpenSession_OutputMessage" />
+    <wsdl:operation name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserStateService/Register" message="tns:IUserStateService_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserStateService/RegisterResponse" message="tns:IUserStateService_Register_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="NewUser">
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserStateService/NewUser" message="tns:IUserStateService_NewUser_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserStateService/NewUserResponse" message="tns:IUserStateService_NewUser_InputCallbackMessage" />
+    <wsdl:operation name="Message">
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserStateService/Message" message="tns:IUserStateService_Message_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSDualHttpBinding_IUserStateService" type="tns:IUserStateService">
     <wsp:PolicyReference URI="#WSDualHttpBinding_IUserStateService_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="OpenSession">
-      <soap12:operation soapAction="http://tempuri.org/IUserStateService/OpenSession" style="document" />
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://tempuri.org/IUserStateService/Register" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IUserStateService_OpenSession_Input_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IUserStateService_Register_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IUserStateService_OpenSession_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IUserStateService_Register_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="NewUser">
-      <soap12:operation soapAction="http://tempuri.org/IUserStateService/NewUser" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IUserStateService_NewUser_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
+    <wsdl:operation name="Message">
+      <soap12:operation soapAction="http://tempuri.org/IUserStateService/Message" style="document" />
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IUserStateService_NewUser_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IUserStateService_Message_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

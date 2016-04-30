@@ -8,11 +8,11 @@ using Model;
 
 namespace CheckersClient
 {
-    public class UserStatus : IUserStateServiceCallback
+    public class UserStatus : UserStatusService.IUserStateServiceCallback
     {
-        public void NewUser(AddToDict users, User user)
+        public void Message()
         {
-            
+            Console.WriteLine("ss");
         }
     }
 }
