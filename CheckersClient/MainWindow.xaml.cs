@@ -36,14 +36,14 @@ namespace LoginClient
             ins = svc.IsUserExist(txtUserName.Text, txtPassword.Password);
             string value = this.txtUserName.Text;
             if (ins != null)
-            {
-                
+            {                
                 StartWindow window2 = new StartWindow(value, ins);
                 window2.Show();
                 this.Close();
             }
             else
-                MessageBox.Show("Login failed");
+                MessageBox.Show("Login failed");            
         }
+        
     }
 }

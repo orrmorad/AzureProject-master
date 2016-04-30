@@ -63,6 +63,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Properties\DataSources\AddService.AddToDict.datasource" />
+    <None Include="Properties\DataSources\Model.User.datasource" />
     <None Include="Service References\AddUserService\AddService.wsdl" />
     <None Include="Service References\AddUserService\item.xsd">
       <SubType>Designer</SubType>
@@ -107,6 +108,10 @@
     <ProjectReference Include="..\AddService\AddService.csproj">
       <Project>{103F1DCB-7F10-45B2-A09D-56206FC01677}</Project>
       <Name>AddService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{2c371c3b-c041-4239-9b78-8399550f1b7f}</Project>
+      <Name>BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\UsersLib\Model.csproj">
       <Project>{3ffcb33d-96e2-4d1a-9bae-b363a128f1bf}</Project>

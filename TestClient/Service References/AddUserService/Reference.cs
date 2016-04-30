@@ -21,6 +21,12 @@ namespace TestClient.AddUserService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/InsertUser", ReplyAction="http://tempuri.org/IAddService/InsertUserResponse")]
         System.Threading.Tasks.Task InsertUserAsync(int id, string userName, string firstName, string lastName, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/GetOfflineUsers", ReplyAction="http://tempuri.org/IAddService/GetOfflineUsersResponse")]
+        Model.User[] GetOfflineUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/GetOfflineUsers", ReplyAction="http://tempuri.org/IAddService/GetOfflineUsersResponse")]
+        System.Threading.Tasks.Task<Model.User[]> GetOfflineUsersAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/IsUserExist", ReplyAction="http://tempuri.org/IAddService/IsUserExistResponse")]
         AddService.AddToDict IsUserExist(string userName, string password);
         
@@ -61,6 +67,14 @@ namespace TestClient.AddUserService {
         
         public System.Threading.Tasks.Task InsertUserAsync(int id, string userName, string firstName, string lastName, string password) {
             return base.Channel.InsertUserAsync(id, userName, firstName, lastName, password);
+        }
+        
+        public Model.User[] GetOfflineUsers() {
+            return base.Channel.GetOfflineUsers();
+        }
+        
+        public System.Threading.Tasks.Task<Model.User[]> GetOfflineUsersAsync() {
+            return base.Channel.GetOfflineUsersAsync();
         }
         
         public AddService.AddToDict IsUserExist(string userName, string password) {

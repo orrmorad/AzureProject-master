@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AddService" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Model" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/AddService" />
   <xs:element name="InsertUser">
     <xs:complexType>
       <xs:sequence>
@@ -17,6 +18,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetOfflineUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOfflineUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetOfflineUsersResult" nillable="true" type="q1:ArrayOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="IsUserExist">
     <xs:complexType>
       <xs:sequence>
@@ -28,7 +41,7 @@
   <xs:element name="IsUserExistResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AddService" minOccurs="0" name="IsUserExistResult" nillable="true" type="q1:AddToDict" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AddService" minOccurs="0" name="IsUserExistResult" nillable="true" type="q2:AddToDict" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

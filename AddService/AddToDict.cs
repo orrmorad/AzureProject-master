@@ -28,5 +28,10 @@ namespace AddService
         {
             clientDictionary.Add(id, user);
         }
+
+        public void RemoveFromDictionary(Guid id)
+        {
+            clientDictionary.Remove(id);
+        }
     }
 }

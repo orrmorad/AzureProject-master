@@ -2,9 +2,11 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace BL
 {
@@ -59,6 +61,20 @@ namespace BL
                 user = context.Users.Where((u) => u.UserName == userName).FirstOrDefault();
                 return user;
             }
+        }
+
+        public List<Model.User> GetOfflineUsers(List<Model.User> _onlineUsers)
+        {
+            List<Model.User> offlineUsers = new List<Model.User>();
+            using (var db = new DataContext())
+            {
+                foreach (var user in db.Users)
+                {
+                    if (!(_onlineUsers.Exists(u => u.Id == user.Id)))
+                        offlineUsers.Add(user);
+                }
+            }
+            return offlineUsers;
         }
     }
 }

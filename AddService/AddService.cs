@@ -13,6 +13,9 @@ namespace AddService
     public class AddService : IAddService
     {
         public AddToDict inst = AddToDict.Instance;
+        List<User> onlineUsers = new List<User>();
+        BL.Logic logic = new BL.Logic();
+
         public AddToDict IsUserExist(string userName, string password)
         {
             //AddToDict inst = AddToDict.Instance;
@@ -34,6 +37,12 @@ namespace AddService
             var addUser = new BL.Logic();
             addUser.InsertUser(id, userName, firstName, lastName, password);
             Console.WriteLine("User added succefully");
+        }
+
+        public List<User> GetOfflineUsers()
+        {
+            List<User> onlineUsers = inst.clientDictionary.Select(u => u.Value).ToList();
+            return logic.GetOfflineUsers(onlineUsers);
         }
     }
 }

@@ -5,19 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckersClient"
         mc:Ignorable="d"
-        Title="StartWindow" Height="350" Width="525">
+        Title="StartWindow" Height="350" Width="525" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border  Background="Azure" BorderBrush="Gainsboro" BorderThickness="2" Height="100" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Border  Background="Azure" BorderBrush="Gainsboro" BorderThickness="2" Height="100" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock FontStyle="Italic" FontWeight="Black" TextWrapping="WrapWithOverflow" Text="{Binding Path=Header}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
         </Border>
-        <Border Grid.Row="1" Grid.RowSpan="2" Background="GhostWhite" BorderBrush="Gainsboro">
+        <Border Background="GhostWhite" BorderBrush="Gainsboro" Grid.Row="1" Grid.Column="0">
             <StackPanel Background="CadetBlue">
-                <TextBlock Text="Online users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>               
+                <TextBlock Text="Online users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>
                 <ListBox ItemsSource="{DynamicResource Users}" Grid.IsSharedSizeScope="True" Background="CadetBlue" BorderThickness="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -37,21 +41,23 @@
                 </ListBox>
             </StackPanel>
         </Border>
-        <Border Grid.Row="2">
-            <StackPanel>
-                <TextBlock Text="Offline users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>
-                <BulletDecorator>
-                    <BulletDecorator.Bullet>
-                        <Ellipse Height="10" Width="10" Fill="Red" HorizontalAlignment="Center"/>
-                    </BulletDecorator.Bullet>
-                    <TextBlock Text=" user1" FontSize="14"/>
-                </BulletDecorator>
-                <BulletDecorator>
-                    <BulletDecorator.Bullet>
-                        <Ellipse Height="10" Width="10" Fill="Red" HorizontalAlignment="Center"/>
-                    </BulletDecorator.Bullet>
-                    <TextBlock Text=" user2" FontSize="14" />
-                </BulletDecorator>
+        <Border Grid.Row="2" Grid.Column="0">
+            <StackPanel Background="CadetBlue">
+                <TextBlock Text="Offline users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>                
+                <ListBox ItemsSource="{Binding OfflineUserNames}" Background="CadetBlue" BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <BulletDecorator>
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="10" Width="10" Fill="Red" HorizontalAlignment="Center"/>
+                                    </BulletDecorator.Bullet>
+                                    <TextBlock Text="{Binding}" FontSize="14"/>
+                                </BulletDecorator>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
         </Border>
     </Grid>

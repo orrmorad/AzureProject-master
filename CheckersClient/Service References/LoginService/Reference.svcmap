@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="be053f2b-132f-45a9-af0e-2c0409e6b99f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9ede213c-f70a-4f14-8922-d512fe8d9116" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,13 +22,13 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/AddService/AddService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="90976ab9-4925-4e36-a403-1913bc1c1ec8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd3" />
-    <MetadataFile FileName="AddService.wsdl" MetadataType="Wsdl" ID="25280ac1-7d88-4f89-af20-36e2463e5edf" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?wsdl" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b01e6a55-dbf2-4774-8be3-6fc5b8ed1325" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd0" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="2432aa9f-f781-4060-9115-02d0bd95c7a7" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd1" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="29c52f0d-2559-4b63-b03d-c13663703e85" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd4" />
-    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="17a3069d-6452-4cd3-9b64-b02f8e479ce9" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd2" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="883fca83-c05c-406f-b0b7-84aa5f361533" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="15033015-fc58-4028-aa85-2a61784447e6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd3" />
+    <MetadataFile FileName="AddService.wsdl" MetadataType="Wsdl" ID="6778ed32-7ef1-4c22-aa39-9aa014bbaa53" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="14743d61-1587-421b-96c2-9a25ec67e20e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd0" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="23068273-851d-481e-81ed-ba2b07c16f83" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd1" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="39e7d793-ce80-4214-aa21-6f47972a8d28" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd4" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="d08fe810-c0d1-436e-b8c4-f841421d8159" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="a2bf6c20-f971-4b46-aa10-cc6f0bd65a63" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/AddService/?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
