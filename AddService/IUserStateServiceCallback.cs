@@ -12,6 +12,6 @@ namespace AddService
     public interface IUserStateServiceCallback
     {
         [OperationContract(IsOneWay = true)]
-        void Message();
+        void Message();        
     }
 }

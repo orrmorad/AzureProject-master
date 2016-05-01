@@ -30,6 +30,8 @@ namespace CheckersClient
         public List<Model.User> OfflineUsers { get; set; }
         public List<string> OfflineUserNames { get; set; }
 
+        public ObservableCollection<string> OnlineUsers{ get; set; }
+
         LoginService.AddServiceClient svc;
 
         public StartWindow(string _userName, AddToDict _inst)
@@ -37,10 +39,11 @@ namespace CheckersClient
             InitializeComponent();
             DataContext = this;
             OfflineUserNames = new List<string>();
+            OnlineUsers = new ObservableCollection<string>();
             UserName = _userName;
             Inst = _inst;
             Header = "Hello " + UserName;
-            Resources["Users"] = Inst.clientDictionary;
+            //Resources["Users"] = Inst.clientDictionary;
         }
 
         public void OfflineUserList()
@@ -49,10 +52,19 @@ namespace CheckersClient
             OfflineUsers.ForEach(user => OfflineUserNames.Add(user.UserName));
         }
 
+        public void OnlineUserList()
+        {
+            foreach(var c in Inst.clientDictionary)
+            {
+                OnlineUsers.Add(c.Value.UserName);
+            }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             svc = new LoginService.AddServiceClient();            
-            OfflineUserList();                     
+            OfflineUserList();
+            OnlineUserList();                    
         }
     }
 }
