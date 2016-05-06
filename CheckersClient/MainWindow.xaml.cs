@@ -15,6 +15,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BL;
 using AddService;
+using System.ServiceModel;
+using CheckersClient.UserStatusService;
+using System.Collections.ObjectModel;
 
 namespace LoginClient
 {
@@ -24,10 +27,11 @@ namespace LoginClient
     public partial class MainWindow : Window
     {
         AddToDict ins;
-
+        ObservableCollection<string> OnlineClients { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            OnlineClients = new ObservableCollection<string>();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -42,8 +46,17 @@ namespace LoginClient
                 this.Close();
             }
             else
-                MessageBox.Show("Login failed");            
+                MessageBox.Show("Login failed");
         }
-        
+
+        private ObservableCollection<string> OnlineUsers(AddToDict ins)
+        {
+            foreach (var userName in ins.clientDictionary)
+            {
+                OnlineClients.Add(userName.Value.UserName);
+            }
+            return OnlineClients;
+        }
+
     }
 }

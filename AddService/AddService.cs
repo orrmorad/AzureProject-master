@@ -14,16 +14,17 @@ namespace AddService
     {
         public AddToDict inst = AddToDict.Instance;
         List<User> onlineUsers = new List<User>();
-        BL.Logic logic = new BL.Logic();
+        // BL.Logic logic = new BL.Logic();
+        public BL.Logic bl = BL.Logic.Instance;
 
         public AddToDict IsUserExist(string userName, string password)
-        {            
-            var exist = new BL.Logic();
-            var getUser = new BL.Logic();
-            bool b = exist.IsExist(userName, password);
+        {
+            //var exist = new BL.Logic();
+            //var getUser = new BL.Logic();
+            bool b = bl.IsExist(userName, password);
             if (b)
             {
-                User user = getUser.GetUser(userName);
+                User user = bl.GetUser(userName);
                 Guid key = Guid.NewGuid();
                 inst.AddToDictionary(key, user);
                 return inst;
@@ -33,15 +34,15 @@ namespace AddService
 
         public void InsertUser(int id, string userName, string firstName, string lastName, string password)
         {
-            var addUser = new BL.Logic();
-            addUser.InsertUser(id, userName, firstName, lastName, password);
+            //var addUser = new BL.Logic();
+            bl.InsertUser(id, userName, firstName, lastName, password);
             Console.WriteLine("User added succefully");
         }
 
         public List<User> GetOfflineUsers()
         {
             List<User> onlineUsers = inst.clientDictionary.Select(u => u.Value).ToList();
-            return logic.GetOfflineUsers(onlineUsers);
+            return bl.GetOfflineUsers(onlineUsers);
         }
     }
 }

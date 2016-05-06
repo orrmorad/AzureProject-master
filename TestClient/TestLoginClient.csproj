@@ -83,6 +83,18 @@
     <None Include="Service References\StatusService\item.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\StatusService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StatusService\item11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StatusService\item12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StatusService\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\StatusService\UserStateService.wsdl" />
   </ItemGroup>
   <ItemGroup>

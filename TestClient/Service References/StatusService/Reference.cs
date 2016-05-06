@@ -16,17 +16,17 @@ namespace TestClient.StatusService {
     public interface IUserStateService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/Register", ReplyAction="http://tempuri.org/IUserStateService/RegisterResponse")]
-        void Register();
+        void Register(string userName, AddService.AddToDict instance);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/Register", ReplyAction="http://tempuri.org/IUserStateService/RegisterResponse")]
-        System.Threading.Tasks.Task RegisterAsync();
+        System.Threading.Tasks.Task RegisterAsync(string userName, AddService.AddToDict instance);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IUserStateServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/Message")]
-        void Message();
+        void Message(string userName, AddService.AddToDict instance);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -57,12 +57,12 @@ namespace TestClient.StatusService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void Register() {
-            base.Channel.Register();
+        public void Register(string userName, AddService.AddToDict instance) {
+            base.Channel.Register(userName, instance);
         }
         
-        public System.Threading.Tasks.Task RegisterAsync() {
-            return base.Channel.RegisterAsync();
+        public System.Threading.Tasks.Task RegisterAsync(string userName, AddService.AddToDict instance) {
+            return base.Channel.RegisterAsync(userName, instance);
         }
     }
 }

@@ -18,12 +18,16 @@ namespace AddService
             //host2.Open();
             //Console.Read();
 
-            UserStateService state = new UserStateService();
-            ServiceHost serviceHost = new ServiceHost(state);
-            serviceHost.Open();
+            //UserStateService state = new UserStateService();
+            var host2 = new ServiceHost(typeof(UserStateService));
+            host2.Open();
+            //ServiceHost serviceHost = new ServiceHost(state);
+            //serviceHost.Open();
             Console.WriteLine("Service started, press any key to quit");
             Console.ReadKey();
-            serviceHost.Close();
+            //serviceHost.Close();
+
+
         }
     }
 }

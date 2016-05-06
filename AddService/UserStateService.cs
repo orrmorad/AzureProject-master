@@ -6,31 +6,105 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using DAL;
+using System.Collections.ObjectModel;
 
 namespace AddService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class UserStateService : IUserStateService
     {
-        private readonly List<IUserStateServiceCallback> callbacks = new List<IUserStateServiceCallback>();
 
-        public UserStateService()
+        private static Dictionary<string, IUserStateServiceCallback> clients =
+            new Dictionary<string, IUserStateServiceCallback>();
+
+        private static object locker = new object();
+
+
+        public void NotifyServer(EventDataType eventData)
         {
-
-        }
-
-        public void Register()
-        {
-            callbacks.Add(OperationContext.Current.GetCallbackChannel<IUserStateServiceCallback>());
-            NotifyUsers();
-        }
-
-        private void NotifyUsers()
-        {
-            foreach (var callback in callbacks)
+            lock (locker)
             {
-                callback.Message();
+                var inactiveClients = new List<string>();
+                foreach (var client in clients)
+                {
+                    if (client.Key != eventData.ClientName)
+                    {
+                        try
+                        {
+                            client.Value.BroadcastToClient(eventData);
+                        }
+                        catch (Exception ex)
+                        {
+                            inactiveClients.Add(client.Key);
+                        }
+                    }
+                }
+
+                if (inactiveClients.Count > 0)
+                {
+                    foreach (var client in inactiveClients)
+                    {
+                        clients.Remove(client);
+                    }
+                }
             }
         }
+
+
+
+        public void RegisterClient(string clientName)
+        {
+            if (clientName != null && clientName != "")
+            {
+                try
+                {
+                    IUserStateServiceCallback callback =
+                        OperationContext.Current.GetCallbackChannel<IUserStateServiceCallback>();
+                    lock (locker)
+                    {
+                        //remove the old client
+                        if (clients.Keys.Contains(clientName))
+                            clients.Remove(clientName);
+                        clients.Add(clientName, callback);
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+
+        #region OLD CODE
+        //private readonly List<IUserStateServiceCallback> callbacks = new List<IUserStateServiceCallback>();
+
+        //private static object locker = new object();
+
+        //private static Dictionary<string, IUserStateServiceCallback> clients =
+        //    new Dictionary<string, IUserStateServiceCallback>();
+
+        //public UserStateService()
+        //{
+
+        //}
+
+        //public void Register(string userName, AddToDict instance)
+        //{
+        //    callbacks.Add(OperationContext.Current.GetCallbackChannel<IUserStateServiceCallback>());
+        //    NotifyUsers(userName, instance);
+        //}
+
+        //public void NotifyUsers(string userName, AddToDict instance)
+        //{
+        //    foreach (var callback in callbacks)
+        //    {
+        //        callback.Message(userName, instance);
+        //    }
+
+
+        //}
+        #endregion
+
     }
 }

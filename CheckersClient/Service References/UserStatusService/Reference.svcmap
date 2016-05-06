@@ -22,8 +22,12 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="5d1c9d86-83a9-46ca-8c83-9df5c619b791" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd1" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="33aec367-27ee-401c-a649-1fb08134d25e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?disco" />
+    <MetadataFile FileName="item11.xsd" MetadataType="Schema" ID="719deaf9-a58f-4675-a0be-7c7b88574fbd" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd4" />
     <MetadataFile FileName="UserStateService.wsdl" MetadataType="Wsdl" ID="6995c17a-235a-48e7-a770-64692e034e3e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?wsdl" />
+    <MetadataFile FileName="item12.xsd" MetadataType="Schema" ID="7d31fcb2-3df4-4fcd-8f83-683dcf1789e3" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd2" />
+    <MetadataFile FileName="item13.xsd" MetadataType="Schema" ID="5fa9e5af-6dc0-42ba-b743-97c2dc580fa1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd3" />
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="d1f300c3-cfdf-4d2d-bcd8-6c9acaf78dec" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd0" />
   </Metadata>
   <Extensions>

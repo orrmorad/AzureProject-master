@@ -15,18 +15,30 @@ namespace CheckersClient.UserStatusService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserStatusService.IUserStateService", CallbackContract=typeof(CheckersClient.UserStatusService.IUserStateServiceCallback))]
     public interface IUserStateService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/Register", ReplyAction="http://tempuri.org/IUserStateService/RegisterResponse")]
-        void Register();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/RegisterClient")]
+        void RegisterClient(string clientName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/RegisterClient")]
+        System.Threading.Tasks.Task RegisterClientAsync(string clientName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/NotifyServer")]
+        void NotifyServer(AddService.EventDataType eventData);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/NotifyServer")]
+        System.Threading.Tasks.Task NotifyServerAsync(AddService.EventDataType eventData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/Register", ReplyAction="http://tempuri.org/IUserStateService/RegisterResponse")]
-        System.Threading.Tasks.Task RegisterAsync();
+        void Register(string userName, AddService.AddToDict instance);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/Register", ReplyAction="http://tempuri.org/IUserStateService/RegisterResponse")]
+        System.Threading.Tasks.Task RegisterAsync(string userName, AddService.AddToDict instance);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IUserStateServiceCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/Message")]
-        void Message();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/BroadcastToClient")]
+        void BroadcastToClient(AddService.EventDataType eventData);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -57,12 +69,28 @@ namespace CheckersClient.UserStatusService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void Register() {
-            base.Channel.Register();
+        public void RegisterClient(string clientName) {
+            base.Channel.RegisterClient(clientName);
         }
         
-        public System.Threading.Tasks.Task RegisterAsync() {
-            return base.Channel.RegisterAsync();
+        public System.Threading.Tasks.Task RegisterClientAsync(string clientName) {
+            return base.Channel.RegisterClientAsync(clientName);
+        }
+        
+        public void NotifyServer(AddService.EventDataType eventData) {
+            base.Channel.NotifyServer(eventData);
+        }
+        
+        public System.Threading.Tasks.Task NotifyServerAsync(AddService.EventDataType eventData) {
+            return base.Channel.NotifyServerAsync(eventData);
+        }
+        
+        public void Register(string userName, AddService.AddToDict instance) {
+            base.Channel.Register(userName, instance);
+        }
+        
+        public System.Threading.Tasks.Task RegisterAsync(string userName, AddService.AddToDict instance) {
+            return base.Channel.RegisterAsync(userName, instance);
         }
     }
 }

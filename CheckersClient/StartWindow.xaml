@@ -20,29 +20,10 @@
             <TextBlock FontStyle="Italic" FontWeight="Black" TextWrapping="WrapWithOverflow" Text="{Binding Path=Header}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
         </Border>
         <Border Background="GhostWhite" BorderBrush="Gainsboro" Grid.Row="1" Grid.Column="0">
-            <!--<StackPanel Background="CadetBlue">
-                <TextBlock Text="Online users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>
-                <ListBox ItemsSource="{DynamicResource Users}" Grid.IsSharedSizeScope="True" Background="CadetBlue" BorderThickness="0">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition SharedSizeGroup="UserName"/>
-                                </Grid.ColumnDefinitions>
-                                <BulletDecorator>
-                                    <BulletDecorator.Bullet>
-                                        <Ellipse Height="10" Width="10" Fill="Green" HorizontalAlignment="Center"/>
-                                    </BulletDecorator.Bullet>
-                                    <TextBlock Margin="2" Text="{Binding Value.UserName}" Grid.Column="0" Background="CadetBlue" FontSize="14"/>
-                                </BulletDecorator>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </StackPanel>-->
+           
             <StackPanel Background="CadetBlue">
                 <TextBlock Text="Online users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>
-                <ListBox ItemsSource="{Binding OnlineUsers}" Background="CadetBlue" BorderThickness="0">
+                <ListBox x:Name="lstbxOnline" ItemsSource="{Binding Users}" Background="CadetBlue" BorderThickness="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -60,8 +41,8 @@
         </Border>
         <Border Grid.Row="2" Grid.Column="0">
             <StackPanel Background="CadetBlue">
-                <TextBlock Text="Offline users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>                
-                <ListBox ItemsSource="{Binding OfflineUserNames}" Background="CadetBlue" BorderThickness="0">
+                <TextBlock Text="Offline users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>
+                <ListBox x:Name="lstbxOffline" ItemsSource="{Binding OfflineUserNames}" Background="CadetBlue" BorderThickness="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

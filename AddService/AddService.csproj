@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="AddService.cs" />
     <Compile Include="AddToDict.cs" />
+    <Compile Include="EventDataType.cs" />
     <Compile Include="IAddService.cs" />
     <Compile Include="IUserStateServiceCallback.cs" />
     <Compile Include="IUserStateService.cs" />
