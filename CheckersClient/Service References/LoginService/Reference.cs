@@ -21,6 +21,12 @@ namespace CheckersClient.LoginService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/InsertUser", ReplyAction="http://tempuri.org/IAddService/InsertUserResponse")]
         System.Threading.Tasks.Task InsertUserAsync(int id, string userName, string firstName, string lastName, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/RemoveUser", ReplyAction="http://tempuri.org/IAddService/RemoveUserResponse")]
+        AddService.AddToDict RemoveUser(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/RemoveUser", ReplyAction="http://tempuri.org/IAddService/RemoveUserResponse")]
+        System.Threading.Tasks.Task<AddService.AddToDict> RemoveUserAsync(string userName);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAddService/GetOfflineUsers", ReplyAction="http://tempuri.org/IAddService/GetOfflineUsersResponse")]
         Model.User[] GetOfflineUsers();
         
@@ -67,6 +73,14 @@ namespace CheckersClient.LoginService {
         
         public System.Threading.Tasks.Task InsertUserAsync(int id, string userName, string firstName, string lastName, string password) {
             return base.Channel.InsertUserAsync(id, userName, firstName, lastName, password);
+        }
+        
+        public AddService.AddToDict RemoveUser(string userName) {
+            return base.Channel.RemoveUser(userName);
+        }
+        
+        public System.Threading.Tasks.Task<AddService.AddToDict> RemoveUserAsync(string userName) {
+            return base.Channel.RemoveUserAsync(userName);
         }
         
         public Model.User[] GetOfflineUsers() {

@@ -1,5 +1,7 @@
 ﻿using AddService;
+using CheckersClient.LoginService;
 using CheckersClient.UserStatusService;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,20 +29,26 @@ namespace CheckersClient
         AddToDict cache;
         public string UserName { get; set; }
         public string Header { get; set; }
+        public Guid Id { get; set; }
+        public List<User> OfflineUsers { get; set; }
+        public ObservableCollection<string> OfflineUserNames { get; set; }
+        AddServiceClient _svc;
 
-        public StartWindow(string _userName, AddToDict _inst)
+        public StartWindow(string _userName, AddToDict _inst, Guid _id, AddServiceClient svc)
         {
             InitializeComponent();
+            Id = _id;
             DataContext = this;
-            Header = "Welcome" + _userName + "!";
+            Header = "Welcome " + _userName + "!";
             cache = _inst;
             UserName = _userName;
             Users = new ObservableCollection<string>();
+            _svc = svc;
             this.RegisterClient();
             this._client.NotifyServer(new EventDataType()
             {
                 ClientName = UserName,
-                EventMessage = "message"
+                EventMessage = "Login"
             });
             #region OLD CODE
             //InstanceContext callback = new InstanceContext(new UserStatus());
@@ -66,15 +74,26 @@ namespace CheckersClient
         private delegate void HandleBroadcastCallback(object sender, EventArgs e);
         public void HandleBroadcast(object sender, EventArgs e)
         {
-            if (Users.Count == 0)
+            EventDataType _event = (EventDataType)sender;
+
+            if (_event.EventMessage == "Login")
             {
-                foreach (var user in cache.clientDictionary)
+                if (Users.Count == 0)
                 {
-                    Users.Add(user.Value.UserName);
+                    foreach (var user in cache.clientDictionary)
+                    {
+                        Users.Add(user.Value.UserName);
+                    }
                 }
+                else
+                    Users.Add(BL.Logic.Instance.Collection.LastOrDefault());
             }
-            else
-                Users.Add(BL.Logic.Instance.Collection.LastOrDefault());
+
+            else if (_event.EventMessage == "Logout")
+            {
+                Users.Remove(_event.ClientName);
+                OfflineUserNames.Add(_event.ClientName);
+            }
         }
 
         private void RegisterClient()
@@ -95,18 +114,8 @@ namespace CheckersClient
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //this.RegisterClient();
-            //this._client.NotifyServer(new EventDataType()
-            //{
-            //    ClientName = UserName,
-            //    EventMessage = "message"
-            //});
+
         }
-
-
-
-
-
 
         #region OLD CODE
 
@@ -144,5 +153,15 @@ namespace CheckersClient
         ////        OnlineUserList();
         //    } 
         #endregion
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            cache = _svc.RemoveUser(UserName);
+            this._client.NotifyServer(new AddService.EventDataType()
+            {
+                ClientName = UserName,
+                EventMessage = "Logout"
+            });
+        }
     }
 }

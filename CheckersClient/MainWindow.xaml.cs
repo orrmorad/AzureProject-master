@@ -39,9 +39,10 @@ namespace LoginClient
             var svc = new CheckersClient.LoginService.AddServiceClient();
             ins = svc.IsUserExist(txtUserName.Text, txtPassword.Password);
             string value = this.txtUserName.Text;
+            Guid id = ins.clientDictionary.FirstOrDefault(x => x.Value.UserName == value).Key;
             if (ins.clientDictionary.Count != 0)
-            {                
-                StartWindow window2 = new StartWindow(value, ins);
+            {
+                StartWindow window2 = new StartWindow(value, ins, id, svc);
                 window2.Show();
                 this.Close();
             }

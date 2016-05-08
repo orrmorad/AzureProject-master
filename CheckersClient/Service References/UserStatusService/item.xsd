@@ -15,23 +15,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Register">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AddService" minOccurs="0" name="instance" nillable="true" type="q2:AddToDict" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RegisterResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="BroadcastToClient">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AddService" minOccurs="0" name="eventData" nillable="true" type="q3:EventDataType" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AddService" minOccurs="0" name="eventData" nillable="true" type="q2:EventDataType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

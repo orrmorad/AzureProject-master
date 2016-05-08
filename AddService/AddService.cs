@@ -39,6 +39,15 @@ namespace AddService
             Console.WriteLine("User added succefully");
         }
 
+
+        public AddToDict RemoveUser(string userName)
+        {
+            Guid id = inst.clientDictionary.FirstOrDefault(x => x.Value.UserName == userName).Key;
+            inst.RemoveFromDictionary(id);
+            return inst;
+        }
+
+
         public List<User> GetOfflineUsers()
         {
             List<User> onlineUsers = inst.clientDictionary.Select(u => u.Value).ToList();

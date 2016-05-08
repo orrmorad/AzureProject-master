@@ -26,12 +26,6 @@ namespace CheckersClient.UserStatusService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/NotifyServer")]
         System.Threading.Tasks.Task NotifyServerAsync(AddService.EventDataType eventData);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/Register", ReplyAction="http://tempuri.org/IUserStateService/RegisterResponse")]
-        void Register(string userName, AddService.AddToDict instance);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserStateService/Register", ReplyAction="http://tempuri.org/IUserStateService/RegisterResponse")]
-        System.Threading.Tasks.Task RegisterAsync(string userName, AddService.AddToDict instance);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,14 +77,6 @@ namespace CheckersClient.UserStatusService {
         
         public System.Threading.Tasks.Task NotifyServerAsync(AddService.EventDataType eventData) {
             return base.Channel.NotifyServerAsync(eventData);
-        }
-        
-        public void Register(string userName, AddService.AddToDict instance) {
-            base.Channel.Register(userName, instance);
-        }
-        
-        public System.Threading.Tasks.Task RegisterAsync(string userName, AddService.AddToDict instance) {
-            return base.Channel.RegisterAsync(userName, instance);
         }
     }
 }

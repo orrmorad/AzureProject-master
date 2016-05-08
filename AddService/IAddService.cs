@@ -15,6 +15,9 @@ namespace AddService
         void InsertUser(int id, string userName, string firstName, string lastName, string password);
 
         [OperationContract]
+        AddToDict RemoveUser(string userName);
+
+        [OperationContract]
         List<Model.User> GetOfflineUsers();
 
         [OperationContract]

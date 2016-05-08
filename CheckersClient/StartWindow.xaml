@@ -17,10 +17,17 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Border  Background="Azure" BorderBrush="Gainsboro" BorderThickness="2" Height="100" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <TextBlock FontStyle="Italic" FontWeight="Black" TextWrapping="WrapWithOverflow" Text="{Binding Path=Header}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock FontStyle="Italic" FontWeight="Black" TextWrapping="WrapWithOverflow" Text="{Binding Path=Header}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Button Width="60" Height="20" Content="Logout" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click"/>
+            </Grid>
         </Border>
         <Border Background="GhostWhite" BorderBrush="Gainsboro" Grid.Row="1" Grid.Column="0">
-           
+
             <StackPanel Background="CadetBlue">
                 <TextBlock Text="Online users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>
                 <ListBox x:Name="lstbxOnline" ItemsSource="{Binding Users}" Background="CadetBlue" BorderThickness="0">
@@ -42,7 +49,7 @@
         <Border Grid.Row="2" Grid.Column="0">
             <StackPanel Background="CadetBlue">
                 <TextBlock Text="Offline users" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>
-                <ListBox x:Name="lstbxOffline" ItemsSource="{Binding OfflineUserNames}" Background="CadetBlue" BorderThickness="0">
+                <ListBox x:Name="lstbxOffline" ItemsSource="{Binding OfflineUsers}" Background="CadetBlue" BorderThickness="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
