@@ -32,6 +32,7 @@
                     <TextBlock Text="Password:" FontWeight="Bold" Grid.Row="1" Grid.Column="0" TextAlignment="Left" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="20" Grid.Row="1" Grid.Column="1"/>
                     <Button x:Name="btnLogin" Width="60" Height="20" Content="Login" Grid.Row="2" VerticalAlignment="Top" Click="btnLogin_Click"/>
+                    <Button Margin="0,49,0,80" Grid.Row="2" Click="Button_Click"></Button>
                 </Grid>
             </Border>
         </Grid>
