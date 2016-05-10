@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using AddService.DataTypes;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,9 @@ namespace AddService
     {
         [OperationContract(IsOneWay = true)]
         void BroadcastToClient(EventDataType eventData);
+
+        [OperationContract(IsOneWay = true)]
+        void BroadcastToChatClient(AskToChatTypes eventChat);
 
         #region OLD CODE
         //[OperationContract(IsOneWay = true)]

@@ -58,8 +58,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChatCallback.cs" />
     <Compile Include="ChatWindow.xaml.cs">
       <DependentUpon>ChatWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ChattingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\LoginService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -121,6 +127,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ChattingService\ChatService.wsdl" />
+    <None Include="Service References\ChattingService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ChattingService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ChattingService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\LoginService\AddService.wsdl" />
     <None Include="Service References\LoginService\item.xsd">
       <SubType>Designer</SubType>
@@ -146,6 +162,9 @@
     <None Include="Service References\UserStatusService\item12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\UserStatusService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UserStatusService\UserStateService.wsdl" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +174,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ChattingService\" />
     <WCFMetadataStorage Include="Service References\LoginService\" />
     <WCFMetadataStorage Include="Service References\UserStatusService\" />
   </ItemGroup>
@@ -198,6 +218,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\UserStatusService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ChattingService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ChattingService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ChattingService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ChattingService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

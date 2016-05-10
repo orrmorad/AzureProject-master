@@ -58,11 +58,5 @@ namespace LoginClient
             }
             return OnlineClients;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ChatWindow chatWindow = new ChatWindow();
-            chatWindow.Show();
-        }
     }
 }

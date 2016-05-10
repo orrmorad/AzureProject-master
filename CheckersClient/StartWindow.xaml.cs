@@ -1,4 +1,5 @@
 ﻿using AddService;
+using AddService.DataTypes;
 using CheckersClient.LoginService;
 using CheckersClient.UserStatusService;
 using Model;
@@ -34,6 +35,9 @@ namespace CheckersClient
         public ObservableCollection<string> OfflineUserNames { get; set; }
         AddServiceClient _svc;
 
+        private string _userAskingToChat;
+        private string _userAskedToChat;
+
         public StartWindow(string _userName, AddToDict _inst, Guid _id, AddServiceClient svc)
         {
             InitializeComponent();
@@ -44,26 +48,13 @@ namespace CheckersClient
             UserName = _userName;
             Users = new ObservableCollection<string>();
             _svc = svc;
+            LogicInstance = BL.Logic.Instance;
             this.RegisterClient();
             this._client.NotifyServer(new EventDataType()
             {
                 ClientName = UserName,
                 EventMessage = "Login"
-            });
-            #region OLD CODE
-            //InstanceContext callback = new InstanceContext(new UserStatus());
-            //UserStateServiceClient client = new UserStateServiceClient(callback);
-            //Inst = _inst;
-            //client.Register(_userName, Inst);
-            //LogicInstance = BL.Logic.LogicInstance;
-
-            //DataContext = this;            
-            //OfflineUserNames = new List<string>();
-            //OnlineUsers = new ObservableCollection<string>();
-            //OnlineUserList();
-            //UserName = _userName;           
-            //Header = "Hello " + UserName;                      
-            #endregion
+            });           
         }
 
 
@@ -106,10 +97,12 @@ namespace CheckersClient
 
             UserStatus cb = new UserStatus();
             cb.SetHandler(this.HandleBroadcast);
+            cb.SetHandlerForChat(this.HandleBroadcastAskToChat);
 
             InstanceContext context = new InstanceContext(cb);
             this._client = new UserStateServiceClient(context);
-            this._client.RegisterClient(Guid.NewGuid().ToString());
+            this._client.RegisterClient(UserName);
+            this._client.RegisterChatAvailability(UserName);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -117,42 +110,9 @@ namespace CheckersClient
 
         }
 
-        #region OLD CODE
+       
 
-        //    public string UserName { get; set; }
-        //    public string Header { get; set; }
-        //    public AddToDict Inst { get; set; }
-        //    public List<Model.User> OfflineUsers { get; set; }
-
-        //    public BL.Logic LogicInstance { get; set; }
-
-        //    public List<string> OfflineUserNames { get; set; }
-        //    public ObservableCollection<string> OnlineUsers { get; set; }
-
-        //    LoginService.AddServiceClient svc;
-
-        //    public void OfflineUserList()
-        //    {
-        //        OfflineUsers = svc.GetOfflineUsers().ToList();
-        //        OfflineUsers.ForEach(user => OfflineUserNames.Add(user.UserName));
-        //    }
-
-        //    public void OnlineUserList()
-        //    {
-        //        foreach(var user in LogicInstance.OnlineUserNames)
-        //        {
-        //            OnlineUsers.Add(user);                
-        //        }
-
-        //    }
-
-        //private void Window_Loaded(object sender, RoutedEventArgs e)
-        //    {
-        ////        svc = new LoginService.AddServiceClient();
-        ////        OfflineUserList();
-        ////        OnlineUserList();
-        //    } 
-        #endregion
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -163,5 +123,35 @@ namespace CheckersClient
                 EventMessage = "Logout"
             });
         }
+
+        private void btnChat_Click(object sender, RoutedEventArgs e)
+        {
+            string _userToChat = this.lstbxOnline.SelectedItem.ToString();
+            this._client.AskToChat(new AskToChatTypes
+            {
+                UserToAsk = _userToChat,
+                UserAsking = UserName
+            }, _userToChat);
+            //_userAskingToChat = UserName;
+            //_userAskedToChat = _userToChat;
+            //LogicInstance.ChatUserList(_userAskingToChat, _userAskedToChat);
+            //ChatWindow chatWindow = new ChatWindow();
+            //chatWindow.Show();
+           // this.Close();            
+        }
+
+        public void HandleBroadcastAskToChat(object sender, EventArgs e)
+        {
+            AskToChatTypes _event = (AskToChatTypes)sender;
+            //MessageBox.Show(_event.UserAsking + " wants to chat with you");
+            ChatWindow chatWindow1 = new ChatWindow(_event.UserAsking);
+            ChatWindow chatWindow2 = new ChatWindow(_event.UserToAsk);
+            chatWindow1.Show();
+            this.Close();
+            chatWindow2.Show();
+            this.Close();
+        }
+
+
     }
 }

@@ -12,17 +12,17 @@ namespace AddService
         static void Main(string[] args)
         {
             var host = new ServiceHost(typeof(AddService));
-            host.Open();
+            host.Open();           
 
-            //var host2 = new ServiceHost(typeof(UserStateService));
-            //host2.Open();
-            //Console.Read();
-
-            //UserStateService state = new UserStateService();
+           
             var host2 = new ServiceHost(typeof(UserStateService));
             host2.Open();
             //ServiceHost serviceHost = new ServiceHost(state);
             //serviceHost.Open();
+
+            var host3 = new ServiceHost(typeof(ChatService));
+            host3.Open();
+
             Console.WriteLine("Service started, press any key to quit");
             Console.ReadKey();
             //serviceHost.Close();

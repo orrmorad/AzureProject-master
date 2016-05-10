@@ -58,6 +58,7 @@
     <Compile Include="AddService.cs" />
     <Compile Include="AddToDict.cs" />
     <Compile Include="ChatService.cs" />
+    <Compile Include="DataTypes\AskToChatTypes.cs" />
     <Compile Include="DataTypes\ChatEvents.cs" />
     <Compile Include="EventDataType.cs" />
     <Compile Include="IAddService.cs" />

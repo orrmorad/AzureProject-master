@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Model;
 using DAL;
 using System.Collections.ObjectModel;
+using AddService.DataTypes;
 
 namespace AddService
 {
@@ -18,27 +19,32 @@ namespace AddService
         private static Dictionary<string, IUserStateServiceCallback> clients =
             new Dictionary<string, IUserStateServiceCallback>();
 
+        private static Dictionary<string, IUserStateServiceCallback> ChatClients =
+           new Dictionary<string, IUserStateServiceCallback>();
+
         private static object locker = new object();
 
-
-        public void NotifyServer(EventDataType eventData)
+        public void AskToChat(AskToChatTypes eventData, string userToChat)
         {
             lock (locker)
             {
                 var inactiveClients = new List<string>();
-                foreach (var client in clients)
+                foreach (var client in ChatClients)
                 {
-                    if (client.Key != eventData.ClientName)
+                    //if (client.Key != eventData.ClientName)
+                    //{
+                    if (userToChat == client.Key)
                     {
                         try
                         {
-                            client.Value.BroadcastToClient(eventData);
+                            client.Value.BroadcastToChatClient(eventData);
                         }
                         catch (Exception ex)
                         {
                             inactiveClients.Add(client.Key);
                         }
                     }
+                    //}
                 }
 
                 if (inactiveClients.Count > 0)
@@ -51,7 +57,35 @@ namespace AddService
             }
         }
 
+        public void NotifyServer(EventDataType eventData)
+        {
+            lock (locker)
+            {
+                var inactiveClients = new List<string>();
+                foreach (var client in clients)
+                {
+                    //if (client.Key != eventData.ClientName)
+                    //{
+                    try
+                    {
+                        client.Value.BroadcastToClient(eventData);
+                    }
+                    catch (Exception ex)
+                    {
+                        inactiveClients.Add(client.Key);
+                    }
+                    //}
+                }
 
+                if (inactiveClients.Count > 0)
+                {
+                    foreach (var client in inactiveClients)
+                    {
+                        clients.Remove(client);
+                    }
+                }
+            }
+        }
 
         public void RegisterClient(string clientName)
         {
@@ -74,6 +108,31 @@ namespace AddService
                 }
             }
         }
+
+        public void RegisterChatAvailability(string clientName)
+        {
+            if (clientName != null && clientName != "")
+            {
+                try
+                {
+                    IUserStateServiceCallback callback =
+                        OperationContext.Current.GetCallbackChannel<IUserStateServiceCallback>();
+                    lock (locker)
+                    {
+                        //remove the old client
+                        if (ChatClients.Keys.Contains(clientName))
+                            ChatClients.Remove(clientName);
+                        ChatClients.Add(clientName, callback);
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+        
+
 
 
         #region OLD CODE

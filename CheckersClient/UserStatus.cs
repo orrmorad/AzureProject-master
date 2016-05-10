@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using System.ServiceModel;
+using AddService.DataTypes;
 
 namespace CheckersClient
 {
@@ -14,6 +15,8 @@ namespace CheckersClient
     {
         BL.Logic LogicInstance = BL.Logic.Instance;
         private EventHandler _broadcastorCallBackHandler;
+
+        
 
         public void SetHandler(EventHandler handler)
         {
@@ -29,6 +32,26 @@ namespace CheckersClient
         private void OnBroadcast(object eventData)
         {
             this._broadcastorCallBackHandler.Invoke(eventData, null);
+        }
+
+
+        //***********************************************************************//
+
+        private EventHandler _broadcastorCallBackHandlerForChat;
+        public void SetHandlerForChat(EventHandler handler)
+        {
+            this._broadcastorCallBackHandlerForChat = handler;
+        }
+
+        public void BroadcastToChatClient(AskToChatTypes eventChat)
+        {
+            LogicInstance.ChatUserList(eventChat.UserAsking, eventChat.UserToAsk);
+            OnBroadcastToChat(eventChat);
+        }
+
+        private void OnBroadcastToChat(object eventChat)
+        {
+            this._broadcastorCallBackHandlerForChat.Invoke(eventChat, null);
         }
 
 

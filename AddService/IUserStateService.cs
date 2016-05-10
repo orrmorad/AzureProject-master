@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using System.Collections.ObjectModel;
+using AddService.DataTypes;
 
 namespace AddService
 {
@@ -17,6 +18,12 @@ namespace AddService
 
         [OperationContract(IsOneWay = true)]
         void NotifyServer(EventDataType eventData);
+
+        [OperationContract(IsOneWay = true)]
+        void AskToChat(AskToChatTypes eventData, string userToChat);
+
+        [OperationContract(IsOneWay = true)]
+        void RegisterChatAvailability(string clientName);
 
         #region OLD CODE
         //[OperationContract]

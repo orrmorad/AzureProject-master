@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AddService" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/AddService/UserStateService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/AddService.DataTypes" />
   <xs:element name="RegisterClient">
     <xs:complexType>
       <xs:sequence>
@@ -15,10 +16,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AskToChat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AddService.DataTypes" minOccurs="0" name="eventData" nillable="true" type="q2:AskToChatTypes" />
+        <xs:element minOccurs="0" name="userToChat" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterChatAvailability">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="BroadcastToClient">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AddService" minOccurs="0" name="eventData" nillable="true" type="q2:EventDataType" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AddService" minOccurs="0" name="eventData" nillable="true" type="q3:EventDataType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BroadcastToChatClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AddService.DataTypes" minOccurs="0" name="eventChat" nillable="true" type="q4:AskToChatTypes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

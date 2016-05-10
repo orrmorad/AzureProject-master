@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CheckersClient"
         mc:Ignorable="d"
         Title="ChatWindow" Height="350" Width="525">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition/>
@@ -17,17 +17,17 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Border  Background="Azure" BorderBrush="Gainsboro" BorderThickness="2" Height="100" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <TextBlock FontStyle="Italic" FontWeight="Black" TextWrapping="WrapWithOverflow" Text="Conversation" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <TextBlock FontStyle="Italic" FontWeight="Black" TextWrapping="WrapWithOverflow" Text="{Binding Header}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Grid.Column="0" Grid.ColumnSpan="2"/>
         </Border>
         <Border Background="GhostWhite" BorderBrush="Gainsboro" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
             <StackPanel Background="CadetBlue">
                 <TextBlock Text="Chatting Users:" TextDecorations="Underline" FontSize="14" FontWeight="Bold"/>
-                <ListBox x:Name="lstbxOnline" ItemsSource="{Binding Users}" Background="CadetBlue" BorderThickness="0"/>
+                <ListBox x:Name="lstbxOnline" ItemsSource="{Binding ChatUsers}" Background="CadetBlue" BorderThickness="0"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
-                <ListView Width="396"/>
+                <TextBox x:Name="txtMessages" Width="396"/>
             </StackPanel>
         </Border>
         
@@ -35,8 +35,8 @@
             <Grid>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="Message:" />
-                    <TextBox Width="250" Height="40"/>
-                    <Button Content="Send" Width="80" Height="40"/>
+                    <TextBox x:Name="txtMsg" Width="250" Height="40"/>
+                    <Button x:Name="btnSend" Content="Send" Width="80" Height="40" Click="btnSend_Click"/>
                 </StackPanel>
             </Grid>
         </Border>

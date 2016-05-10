@@ -26,6 +26,18 @@ namespace CheckersClient.UserStatusService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/NotifyServer")]
         System.Threading.Tasks.Task NotifyServerAsync(AddService.EventDataType eventData);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/AskToChat")]
+        void AskToChat(AddService.DataTypes.AskToChatTypes eventData, string userToChat);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/AskToChat")]
+        System.Threading.Tasks.Task AskToChatAsync(AddService.DataTypes.AskToChatTypes eventData, string userToChat);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/RegisterChatAvailability")]
+        void RegisterChatAvailability(string clientName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/RegisterChatAvailability")]
+        System.Threading.Tasks.Task RegisterChatAvailabilityAsync(string clientName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -33,6 +45,9 @@ namespace CheckersClient.UserStatusService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/BroadcastToClient")]
         void BroadcastToClient(AddService.EventDataType eventData);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserStateService/BroadcastToChatClient")]
+        void BroadcastToChatClient(AddService.DataTypes.AskToChatTypes eventChat);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -77,6 +92,22 @@ namespace CheckersClient.UserStatusService {
         
         public System.Threading.Tasks.Task NotifyServerAsync(AddService.EventDataType eventData) {
             return base.Channel.NotifyServerAsync(eventData);
+        }
+        
+        public void AskToChat(AddService.DataTypes.AskToChatTypes eventData, string userToChat) {
+            base.Channel.AskToChat(eventData, userToChat);
+        }
+        
+        public System.Threading.Tasks.Task AskToChatAsync(AddService.DataTypes.AskToChatTypes eventData, string userToChat) {
+            return base.Channel.AskToChatAsync(eventData, userToChat);
+        }
+        
+        public void RegisterChatAvailability(string clientName) {
+            base.Channel.RegisterChatAvailability(clientName);
+        }
+        
+        public System.Threading.Tasks.Task RegisterChatAvailabilityAsync(string clientName) {
+            return base.Channel.RegisterChatAvailabilityAsync(clientName);
         }
     }
 }

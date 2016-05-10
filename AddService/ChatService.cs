@@ -15,6 +15,7 @@ namespace AddService
         private static Dictionary<string, IChatServiceCallback> chatUsers =
             new Dictionary<string, IChatServiceCallback>();
         private static object locker = new object();
+
         public void NotifyUsers(ChatEvents chatEvent)
         {
             lock (locker)
@@ -22,8 +23,8 @@ namespace AddService
                 var inactiveClients = new List<string>();
                 foreach (var client in chatUsers)
                 {
-                    if (client.Key != chatEvent.UserName)
-                    {
+                    //if (client.Key != chatEvent.UserName)
+                    //{
                         try
                         {
                             client.Value.BroadcastToChatUsers(chatEvent);
@@ -32,7 +33,7 @@ namespace AddService
                         {
                             inactiveClients.Add(client.Key);
                         }
-                    }
+                    //}
                 }
 
                 if (inactiveClients.Count > 0)

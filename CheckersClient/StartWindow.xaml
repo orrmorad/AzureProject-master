@@ -16,6 +16,7 @@
             <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        <Button x:Name="btnChat" Width="60" Height="30" Content="Chat" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnChat_Click"/>
         <Border  Background="Azure" BorderBrush="Gainsboro" BorderThickness="2" Height="100" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>

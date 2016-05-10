@@ -45,11 +45,14 @@ namespace BL
         public ObservableCollection<string> Collection { get; set; }
         public ObservableCollection<string> OfflineCollection { get; set; }
 
+        public ObservableCollection<string> ChatCollection { get; set; }
+
 
         private Logic()
         {
             Collection = new ObservableCollection<string>();
             OfflineCollection = new ObservableCollection<string>();
+            ChatCollection = new ObservableCollection<string>();
         }
 
         public static Logic Instance
@@ -73,7 +76,12 @@ namespace BL
             OfflineCollection.Add(_userName);
             Collection.Remove(_userName);
         }
-        /*********************************/
+
+        public void ChatUserList(string _user1, string _user2)
+        {
+            ChatCollection.Add(_user1);
+            ChatCollection.Add(_user2);
+        }
 
 
         public void InsertUser(int id, string userName, string firstName, string lastName, string password)
