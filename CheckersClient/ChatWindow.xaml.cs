@@ -82,6 +82,7 @@ namespace CheckersClient
                 Message = this.txtMsg.Text,
                 UserName = User
             });
+            txtMsg.Clear();
         }
     }
 }
